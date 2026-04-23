@@ -1,0 +1,1085 @@
+/* ==============================================
+   Ember & Oak — Fine Dining Restaurant
+   External Stylesheet: restaurant.css
+   All styles for restaurant.html live here.
+   No inline or internal CSS used anywhere.
+   Author: Ember & Oak Design Team
+============================================== */
+
+
+/* ─────────────────────────────────────────────
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+───────────────────────────────────────────── */
+:root {
+  --ember:    #c8813a;      /* warm orange-brown */
+  --oak:      #1a1208;      /* near-black walnut  */
+  --cream:    #f5efe6;      /* parchment cream    */
+  --charcoal: #2b2118;      /* rich dark brown    */
+  --muted:    #7a6a56;      /* warm grey          */
+  --gold:     #d4a853;      /* aged gold          */
+  --gold-lt:  #f0d08a;      /* lighter gold       */
+  --seafood:  #6ab4d4;      /* sea blue accent    */
+  --veg:      #6abf6a;      /* fresh green        */
+  --dessert:  #d4a853;      /* warm gold for dessert */
+  --sig:      #e07070;      /* signature rose     */
+  --starter:  #f0c050;      /* sunrise amber      */
+  --white-a75: rgba(255,255,255,.75);
+  --white-a10: rgba(255,255,255,.10);
+}
+
+
+/* ─────────────────────────────────────────────
+   2. GLOBAL RESET & BASE
+───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ─────────────────────────────────────────────
+   3. NAVBAR
+───────────────────────────────────────────── */
+.navbar {
+  background: rgba(26, 18, 8, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(200, 129, 58, 0.15);
+  transition: padding .3s ease, background .3s ease, box-shadow .3s ease;
+}
+
+/* Navbar shrinks slightly when scrolled */
+.navbar.scrolled {
+  padding: 0.55rem 0;
+  background: rgba(26, 18, 8, 0.98);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Brand / Logo */
+.navbar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--gold) !important;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.brand-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* drop-shadow lifts the SVG logo */
+  filter: drop-shadow(0 2px 8px rgba(200, 129, 58, 0.5));
+  transition: filter .3s ease, transform .3s ease;
+}
+
+.navbar-brand:hover .brand-icon {
+  filter: drop-shadow(0 4px 14px rgba(212, 168, 83, 0.7));
+  transform: scale(1.08);
+}
+
+.brand-amp {
+  color: rgba(255, 255, 255, .7);
+  font-weight: 300;
+}
+
+/* Custom hamburger bars (replaces Bootstrap default) */
+.navbar-toggler {
+  border: 1px solid rgba(212, 168, 83, .35);
+  padding: .45rem .65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border-radius: 4px;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.toggler-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+/* Nav links */
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, .78) !important;
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .4rem 1rem !important;
+  transition: color .25s;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.navbar-nav .nav-link i {
+  font-size: .9rem;
+  opacity: .6;
+  transition: opacity .25s, transform .25s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--gold) !important;
+}
+
+.navbar-nav .nav-link:hover i {
+  opacity: 1;
+  transform: scale(1.18) translateY(-1px);
+}
+
+/* Nav CTA button */
+.nav-cta {
+  font-size: .78rem !important;
+  letter-spacing: .1em;
+  padding: .45rem 1.1rem !important;
+  text-transform: uppercase;
+}
+
+
+/* ─────────────────────────────────────────────
+   4. BUTTONS
+───────────────────────────────────────────── */
+.btn-ember {
+  background: var(--ember);
+  color: #fff;
+  border: none;
+  padding: .9rem 2.4rem;
+  font-size: .82rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transition: background .25s, transform .2s, box-shadow .25s;
+}
+
+.btn-ember:hover,
+.btn-ember:focus {
+  background: var(--gold);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 129, 58, 0.35);
+}
+
+.btn-outline-ember {
+  background: transparent;
+  color: rgba(255, 255, 255, .85);
+  border: 1.5px solid rgba(255, 255, 255, .5);
+  padding: .9rem 2rem;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transition: all .25s;
+}
+
+.btn-outline-ember:hover,
+.btn-outline-ember:focus {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, .8);
+}
+
+/* WhatsApp CTA button */
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  padding: .65rem 1.4rem;
+  font-size: .82rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transition: background .25s, transform .2s;
+}
+
+.btn-whatsapp:hover {
+  background: #1daa54;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+
+/* ─────────────────────────────────────────────
+   5. HERO SECTION
+───────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Full-size background image */
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* subtle parallax-like zoom on load */
+  animation: heroZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1);    }
+  to   { transform: scale(1.05); }
+}
+
+/* Dark gradient overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(26, 18, 8, 0.82) 0%,
+    rgba(26, 18, 8, 0.55) 50%,
+    rgba(200, 129, 58, 0.18) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Eyebrow tag */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .78rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  border-top: 1px solid rgba(212, 168, 83, .4);
+  border-bottom: 1px solid rgba(212, 168, 83, .4);
+  padding: .38rem 1.2rem;
+}
+
+/* Animated flame icon */
+.flame {
+  animation: flickerFlame 2s ease-in-out infinite;
+  color: var(--ember);
+}
+
+@keyframes flickerFlame {
+  0%, 100% { opacity: 1;  transform: scale(1)   translateY(0);    }
+  40%       { opacity: .7; transform: scale(.9)  translateY(1px);  }
+  70%       { opacity: 1;  transform: scale(1.1) translateY(-1px); }
+}
+
+/* Hero headline */
+.hero h1 {
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: .02em;
+  margin-bottom: 1.4rem;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, .78);
+  margin-bottom: 2rem;
+  font-weight: 300;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Trust chips */
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .55rem;
+  margin-bottom: 2.2rem;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  background: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .88);
+  font-size: .74rem;
+  letter-spacing: .07em;
+  padding: .3rem .82rem;
+  border-radius: 30px;
+  transition: background .25s, border-color .25s;
+}
+
+.hero-chip:hover {
+  background: rgba(212, 168, 83, .2);
+  border-color: rgba(212, 168, 83, .5);
+}
+
+.hero-chip i {
+  color: var(--gold);
+  font-size: .82rem;
+}
+
+/* Hero buttons wrapper */
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+
+/* ─────────────────────────────────────────────
+   6. FEATURES STRIP
+───────────────────────────────────────────── */
+.features-strip {
+  background: var(--charcoal);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.8rem 1.4rem;
+  border-right: 1px solid rgba(255, 255, 255, .06);
+  transition: background .25s;
+}
+
+.feature-item:last-child {
+  border-right: none;
+}
+
+.feature-item:hover {
+  background: rgba(200, 129, 58, .07);
+}
+
+.feat-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  transition: transform .3s ease;
+}
+
+.feature-item:hover .feat-icon {
+  transform: scale(1.12) rotate(-5deg);
+}
+
+.fi-fire  { background: rgba(200, 129, 58, .18); color: var(--ember); }
+.fi-leaf  { background: rgba(80, 160, 80, .16);  color: var(--veg);   }
+.fi-clock { background: rgba(212, 168, 83, .18); color: var(--gold);  }
+.fi-award { background: rgba(200, 80, 80, .16);  color: #e07070;      }
+
+.ft-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.08rem;
+  color: var(--cream);
+  display: block;
+  margin-bottom: .12rem;
+}
+
+.ft-sub {
+  font-size: .78rem;
+  color: rgba(245, 239, 230, .42);
+}
+
+
+/* ─────────────────────────────────────────────
+   7. SECTION SHARED STYLES
+───────────────────────────────────────────── */
+.section-eyebrow {
+  display: block;
+  font-size: .74rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: .55rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--oak);
+  line-height: 1.15;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--ember);
+}
+
+.divider-line {
+  width: 46px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ember), var(--gold));
+  margin: 1rem auto 2.5rem;
+  border-radius: 2px;
+}
+
+/* Left-aligned divider (used in About) */
+.divider-left {
+  margin-left: 0;
+}
+
+
+/* ─────────────────────────────────────────────
+   8. MENU SECTION
+───────────────────────────────────────────── */
+#menu {
+  background: var(--oak);
+  padding: 100px 0;
+}
+
+#menu .section-title {
+  color: var(--cream);
+}
+
+#menu .section-eyebrow {
+  color: var(--gold);
+}
+
+/* Menu Card */
+.menu-card {
+  background: var(--charcoal);
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, .55);
+  border-color: rgba(212, 168, 83, .2);
+}
+
+/* Image wrapper with overflow hidden for scale effect */
+.menu-card-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-card-img-wrap img {
+  width: 100%;
+  height: 235px;
+  object-fit: cover;
+  filter: brightness(.88);
+  transition: filter .45s ease, transform .45s ease;
+}
+
+.menu-card:hover .menu-card-img-wrap img {
+  filter: brightness(1.05);
+  transform: scale(1.06);
+}
+
+/* Floating category badge */
+.dish-cat {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  background: rgba(26, 18, 8, .82);
+  backdrop-filter: blur(5px);
+  color: rgba(255, 255, 255, .9);
+  font-size: .67rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .24rem .75rem;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.dish-cat i          { color: var(--ember);   font-size: .8rem; }
+.dish-cat-sea i      { color: var(--seafood);  }
+.dish-cat-dessert i  { color: var(--gold);     }
+.dish-cat-veg i      { color: var(--veg);      }
+.dish-cat-sig i      { color: var(--sig);      }
+.dish-cat-starter i  { color: var(--starter);  }
+
+/* Card body */
+.menu-card .card-body {
+  padding: 1.4rem 1.5rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card .card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--cream);
+  margin-bottom: .35rem;
+}
+
+.menu-card .card-text {
+  font-size: .87rem;
+  color: rgba(245, 239, 230, .56);
+  line-height: 1.68;
+  flex: 1;
+}
+
+.menu-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: .9rem;
+  padding-top: .9rem;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+}
+
+.menu-price {
+  font-size: 1.1rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold);
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.menu-price i {
+  font-size: .8rem;
+  color: var(--ember);
+}
+
+.dish-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.dish-stars i {
+  font-size: .7rem;
+  color: var(--gold);
+}
+
+/* "Chef's Pick" / "New" badges */
+.badge-new {
+  background: var(--ember);
+  color: #fff;
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .2rem .65rem;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: .45rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+}
+
+
+/* ─────────────────────────────────────────────
+   9. ABOUT SECTION
+───────────────────────────────────────────── */
+#about {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+/* Image with floating accent */
+.about-img-wrap {
+  position: relative;
+}
+
+.about-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 16px 16px 0 rgba(200, 129, 58, .18);
+}
+
+/* Small floating overlay image — chef plating */
+.about-accent-img {
+  position: absolute;
+  bottom: -28px;
+  right: -24px;
+  width: 160px;
+  height: 120px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 4px solid var(--cream);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .2);
+}
+
+.about-accent-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text {
+  padding-left: 2rem;
+}
+
+.about-text p {
+  font-size: 1.02rem;
+  line-height: 1.88;
+  color: var(--muted);
+  margin-bottom: 1.3rem;
+}
+
+/* Stat cards */
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.3rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+
+.stat-icon-ring {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin: 0 auto .7rem;
+  transition: transform .3s ease;
+}
+
+.stat-card:hover .stat-icon-ring {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.sir-cal  { background: rgba(200, 129, 58, .12); color: var(--ember); }
+.sir-tphy { background: rgba(212, 168, 83, .16); color: var(--gold);  }
+.sir-leaf { background: rgba(90, 175, 90, .13);  color: #5aaf5a;      }
+
+.stat-card strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.3rem;
+  color: var(--oak);
+  display: block;
+  line-height: 1.1;
+}
+
+.stat-card span {
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+
+/* ─────────────────────────────────────────────
+   10. CONTACT SECTION
+───────────────────────────────────────────── */
+#contact {
+  background: #f0e8dc;
+  padding: 100px 0;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin-bottom: 1.1rem;
+}
+
+.c-icon-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform .25s ease;
+}
+
+.contact-info-item:hover .c-icon-ring {
+  transform: scale(1.12);
+}
+
+.cir-pin   { background: rgba(200, 129, 58, .14); color: var(--ember); }
+.cir-phone { background: rgba(212, 168, 83, .16); color: var(--gold);  }
+.cir-mail  { background: rgba(200, 129, 58, .14); color: var(--ember); }
+.cir-clock { background: rgba(122, 106, 86, .1);  color: var(--muted); }
+
+.ci-label {
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: .1rem;
+}
+
+.ci-value {
+  font-size: .92rem;
+  color: var(--charcoal);
+}
+
+/* Clickable phone link in contact */
+.ci-link {
+  color: var(--charcoal);
+  font-weight: 500;
+  transition: color .2s;
+}
+
+.ci-link:hover {
+  color: var(--ember);
+}
+
+/* Form wrapper */
+.contact-form-wrap {
+  background: #fff;
+  border-radius: 4px;
+  padding: 2.8rem 3.2rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, .08);
+}
+
+.form-label {
+  font-size: .77rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .4rem;
+  display: flex;
+  align-items: center;
+  gap: .38rem;
+}
+
+.form-label i {
+  font-size: .9rem;
+  color: var(--ember);
+}
+
+.form-control,
+.form-select {
+  border: 1.5px solid #e0d5c5;
+  border-radius: 2px;
+  padding: .72rem 1rem;
+  font-family: 'Jost', sans-serif;
+  font-size: .95rem;
+  color: var(--charcoal);
+  background: var(--cream);
+  transition: border-color .25s, box-shadow .25s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ember);
+  box-shadow: 0 0 0 3px rgba(200, 129, 58, .12);
+  background: #fff;
+  color: var(--charcoal);
+}
+
+.form-control::placeholder {
+  color: rgba(122, 106, 86, .55);
+}
+
+
+/* ─────────────────────────────────────────────
+   11. FOOTER
+───────────────────────────────────────────── */
+footer {
+  background: var(--oak);
+  padding: 3rem 0 2rem;
+  color: rgba(245, 239, 230, .5);
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+
+.fb-icon {
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 2px 6px rgba(200, 129, 58, .4));
+  transition: filter .3s ease, transform .3s ease;
+}
+
+.footer-brand:hover .fb-icon {
+  filter: drop-shadow(0 4px 10px rgba(212, 168, 83, .6));
+  transform: scale(1.08);
+}
+
+.footer-brand span {
+  color: rgba(255, 255, 255, .7);
+  font-weight: 300;
+}
+
+.footer-meta {
+  font-size: .84rem;
+  margin-top: .3rem;
+  color: rgba(245, 239, 230, .5);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.footer-meta i {
+  color: var(--ember);
+  font-size: .8rem;
+}
+
+/* Clickable phone number in footer */
+.footer-tel {
+  color: rgba(245, 239, 230, .5);
+  transition: color .2s;
+}
+
+.footer-tel:hover {
+  color: var(--gold);
+}
+
+/* Footer nav links */
+.fnav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .32rem;
+  color: rgba(255, 255, 255, .5);
+  font-size: .81rem;
+  margin: 0 .45rem;
+  transition: color .2s;
+}
+
+.fnav-link i {
+  font-size: .78rem;
+  opacity: .55;
+  transition: opacity .2s, transform .2s;
+}
+
+.fnav-link:hover {
+  color: var(--gold);
+}
+
+.fnav-link:hover i {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Social icons */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, .6);
+  font-size: 1.1rem;
+  margin: 0 .28rem;
+  transition: all .3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+}
+
+.sl-ig:hover {
+  background: radial-gradient(circle at 30% 110%, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-color: transparent;
+  color: #fff;
+}
+
+.sl-fb:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: #fff;
+}
+
+.sl-wa:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff;
+}
+
+.sl-tt:hover {
+  background: #010101;
+  border-color: rgba(255, 255, 255, .2);
+  color: #fff;
+}
+
+.footer-divider {
+  border-color: rgba(255, 255, 255, .08);
+  margin: 2rem 0 1.5rem;
+}
+
+.footer-copy {
+  font-size: .8rem;
+  margin-bottom: 0;
+  color: rgba(245, 239, 230, .4);
+}
+
+
+/* ─────────────────────────────────────────────
+   12. RESPONSIVE — MEDIA QUERIES
+───────────────────────────────────────────── */
+
+/* ── Tablet (max 991px) ── */
+@media (max-width: 991.98px) {
+  /* Stacked mobile nav */
+  .navbar-collapse {
+    background: rgba(26, 18, 8, .97);
+    border: 1px solid rgba(200, 129, 58, .18);
+    border-radius: 4px;
+    margin-top: .75rem;
+    padding: .75rem 1rem;
+  }
+
+  .feature-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+  }
+
+  .feature-item:last-child {
+    border-bottom: none;
+  }
+
+  .about-text {
+    padding-left: 0;
+  }
+
+  .about-accent-img {
+    display: none; /* hide floating accent on smaller screens */
+  }
+}
+
+/* ── Mobile (max 767px) ── */
+@media (max-width: 767.98px) {
+  .about-img {
+    height: 300px;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-form-wrap {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 10vw, 4rem);
+  }
+
+  #menu,
+  #about,
+  #contact {
+    padding: 60px 0;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-card strong {
+    font-size: 1.9rem;
+  }
+}
+
+/* ── Small mobile (max 480px) ── */
+@media (max-width: 480px) {
+  .hero-chips {
+    gap: .4rem;
+  }
+
+  .hero-chip {
+    font-size: .7rem;
+    padding: .28rem .7rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.45rem;
+  }
+}
+
+/* ── Large desktops (min 1400px) ── */
+@media (min-width: 1400px) {
+  .hero h1 {
+    font-size: 7.5rem;
+  }
+
+  .section-title {
+    font-size: 3.5rem;
+  }
+}

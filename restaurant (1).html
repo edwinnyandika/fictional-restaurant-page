@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ember &amp; Oak — Fine Dining</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Bootstrap Icons 1.11 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+  <!-- Google Fonts: Cormorant Garamond + Jost -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- External Stylesheet — ALL styles live here -->
+  <link rel="stylesheet" href="restaurant.css"/>
+</head>
+<body>
+
+<!-- =============================================
+     NAVBAR
+============================================= -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+
+    <!-- Brand / Logo -->
+    <a class="navbar-brand" href="#home">
+      <!-- SVG flame logo — more polished than a simple icon -->
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <circle cx="18" cy="18" r="18" fill="url(#brandGrad)"/>
+          <!-- outer flame -->
+          <path d="M18 6c0 0-7 6-7 11.5a7 7 0 0014 0C25 12 18 6 18 6z" fill="rgba(255,255,255,0.25)"/>
+          <!-- inner flame -->
+          <path d="M18 13c0 0-4 3.5-4 6.5a4 4 0 008 0C22 16.5 18 13 18 13z" fill="rgba(255,255,255,0.85)"/>
+          <!-- bottom leaf / oak -->
+          <ellipse cx="18" cy="27" rx="5" ry="2.5" fill="rgba(255,255,255,0.35)"/>
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#c8813a"/>
+              <stop offset="100%" stop-color="#d4a853"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      Ember <span class="brand-amp">&amp; Oak</span>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navMenu"
+      aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-bar"></span>
+      <span class="toggler-bar"></span>
+      <span class="toggler-bar"></span>
+    </button>
+
+    <!-- Nav links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">
+            <i class="bi bi-house-heart-fill"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#menu">
+            <i class="bi bi-journal-richtext"></i>Menu
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">
+            <i class="bi bi-flower3"></i>About Us
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">
+            <i class="bi bi-send-fill"></i>Contact
+          </a>
+        </li>
+        <!-- CTA Button in nav -->
+        <li class="nav-item ms-lg-3">
+          <a class="btn btn-ember btn-sm nav-cta" href="tel:+254718616917">
+            <i class="bi bi-telephone-fill"></i>Call Us
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- =============================================
+     HERO
+============================================= -->
+<section class="hero" id="home">
+  <!-- Unsplash: dramatic fine-dining wood-fire atmosphere -->
+  <img
+    src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1800&q=85&auto=format&fit=crop"
+    alt="Ember and Oak restaurant — wood-fire kitchen"
+    class="hero-bg-img"
+  />
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content container px-3">
+    <span class="hero-eyebrow">
+      <i class="bi bi-fire flame"></i>
+      Est. 2014 &nbsp;·&nbsp; Fine Dining, Nairobi
+      <i class="bi bi-fire flame"></i>
+    </span>
+
+    <h1>Where Fire Meets <em>Flavour</em></h1>
+
+    <p>Hand-crafted dishes born from wood-fired traditions<br/>and Kenya's finest locally sourced ingredients.</p>
+
+    <!-- Trust chips -->
+    <div class="hero-chips">
+      <span class="hero-chip">
+        <i class="bi bi-patch-check-fill"></i>Award-Winning Kitchen
+      </span>
+      <span class="hero-chip">
+        <i class="bi bi-tree-fill"></i>Farm-to-Table
+      </span>
+      <span class="hero-chip">
+        <i class="bi bi-star-fill"></i>4.9 · 800+ Reviews
+      </span>
+      <span class="hero-chip">
+        <i class="bi bi-clock-fill"></i>Open Daily 12–10pm
+      </span>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-ember">
+        <i class="bi bi-journal-richtext"></i>Explore Menu
+      </a>
+      <a href="#contact" class="btn btn-outline-ember">
+        <i class="bi bi-calendar2-heart-fill"></i>Reserve a Table
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     FEATURES STRIP
+============================================= -->
+<div class="features-strip">
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feat-icon fi-fire">
+            <!-- custom SVG flame icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
+              <path d="M12 2s-5.5 5-5.5 9.5a5.5 5.5 0 0011 0C17.5 7 12 2 12 2zm0 5.5s-2.5 2.5-2.5 4.5a2.5 2.5 0 005 0C14.5 10 12 7.5 12 7.5z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="ft-label">Wood-Fire Cooking</span>
+            <span class="ft-sub">Live oak flame, every dish</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feat-icon fi-leaf">
+            <i class="bi bi-tree-fill"></i>
+          </div>
+          <div>
+            <span class="ft-label">Locally Sourced</span>
+            <span class="ft-sub">Within 50 miles of our door</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feat-icon fi-clock">
+            <i class="bi bi-arrow-repeat"></i>
+          </div>
+          <div>
+            <span class="ft-label">Seasonal Menu</span>
+            <span class="ft-sub">Rotated every 8 weeks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="feature-item">
+          <div class="feat-icon fi-award">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <div>
+            <span class="ft-label">3× Award Winner</span>
+            <span class="ft-sub">Best Fine Dining, East Africa</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     MENU SECTION
+============================================= -->
+<section id="menu">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <span class="section-eyebrow">What We Serve</span>
+      <h2 class="section-title">Our Signature Dishes</h2>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Card 1: Ribeye -->
+      <div class="col-md-6 col-lg-4">
+        <div class="menu-card">
+          <span class="dish-cat">
+            <i class="bi bi-fire"></i>Smoked
+          </span>
+          <div class="menu-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=85&auto=format&fit=crop"
+              alt="Oak-Smoked Ribeye steak"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Oak-Smoked Ribeye<span class="badge-new">Chef's Pick</span></h5>
+            <p class="card-text">Prime-cut ribeye slow-smoked over white oak, served with truffle jus and roasted bone marrow butter.</p>
+            <div class="menu-card-footer">
+              <span class="menu-price"><i class="bi bi-coin"></i>KES 5,800</span>
+              <div class="dish-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Sea Bass -->
+      <div class="col-md-6 col-lg-4">
+        <div class="menu-card">
+          <span class="dish-cat dish-cat-sea">
+            <i class="bi bi-water"></i>Seafood
+          </span>
+          <div class="menu-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=85&auto=format&fit=crop"
+              alt="Seared Sea Bass fillet"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Seared Sea Bass</h5>
+            <p class="card-text">Pan-seared Chilean sea bass with saffron beurre blanc, fennel confit, and crispy capers.</p>
+            <div class="menu-card-footer">
+              <span class="menu-price"><i class="bi bi-coin"></i>KES 4,600</span>
+              <div class="dish-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Crème Brûlée -->
+      <div class="col-md-6 col-lg-4">
+        <div class="menu-card">
+          <span class="dish-cat dish-cat-dessert">
+            <i class="bi bi-gem"></i>Dessert
+          </span>
+          <div class="menu-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=700&q=85&auto=format&fit=crop"
+              alt="Ember Crème Brûlée"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Ember Crème Brûlée<span class="badge-new">New</span></h5>
+            <p class="card-text">Vanilla bean custard torched tableside with smoked sea salt and a delicate tuile garnish.</p>
+            <div class="menu-card-footer">
+              <span class="menu-price"><i class="bi bi-coin"></i>KES 1,600</span>
+              <div class="dish-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Mushroom Risotto -->
+      <div class="col-md-6 col-lg-4">
+        <div class="menu-card">
+          <span class="dish-cat dish-cat-veg">
+            <i class="bi bi-leaf-fill"></i>Vegetarian
+          </span>
+          <div class="menu-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=700&q=85&auto=format&fit=crop"
+              alt="Wild Mushroom Risotto"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Wild Mushroom Risotto</h5>
+            <p class="card-text">Arborio rice cooked in aged parmesan broth with porcini, morel, and truffle oil finish.</p>
+            <div class="menu-card-footer">
+              <span class="menu-price"><i class="bi bi-coin"></i>KES 3,200</span>
+              <div class="dish-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Lamb Rack -->
+      <div class="col-md-6 col-lg-4">
+        <div class="menu-card">
+          <span class="dish-cat dish-cat-sig">
+            <i class="bi bi-stars"></i>Signature
+          </span>
+          <div class="menu-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=700&q=85&auto=format&fit=crop"
+              alt="Herb-Crusted Lamb Rack"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Herb-Crusted Lamb Rack</h5>
+            <p class="card-text">Free-range lamb encrusted with pistachio and rosemary, served with pomegranate jus.</p>
+            <div class="menu-card-footer">
+              <span class="menu-price"><i class="bi bi-coin"></i>KES 5,200</span>
+              <div class="dish-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Burrata -->
+      <div class="col-md-6 col-lg-4">
+        <div class="menu-card">
+          <span class="dish-cat dish-cat-starter">
+            <i class="bi bi-brightness-high-fill"></i>Starter
+          </span>
+          <div class="menu-card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1607116667981-ff148a4e14a6?w=700&q=85&auto=format&fit=crop"
+              alt="Heirloom Burrata salad"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Heirloom Burrata</h5>
+            <p class="card-text">Creamy burrata over roasted heirloom tomatoes, basil oil, balsamic pearls, and grilled sourdough.</p>
+            <div class="menu-card-footer">
+              <span class="menu-price"><i class="bi bi-coin"></i>KES 2,200</span>
+              <div class="dish-stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .row -->
+  </div>
+</section>
+
+
+<!-- =============================================
+     ABOUT SECTION
+============================================= -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- About image — rich restaurant interior -->
+      <div class="col-lg-5">
+        <div class="about-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=900&q=85&auto=format&fit=crop"
+            alt="Ember and Oak restaurant interior with warm lighting"
+            class="about-img"
+          />
+          <!-- floating accent image -->
+          <div class="about-accent-img">
+            <img
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80&auto=format&fit=crop"
+              alt="Chef plating a dish"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- About text -->
+      <div class="col-lg-7 about-text">
+        <span class="section-eyebrow">Our Story</span>
+        <h2 class="section-title">A Passion for <em>Honest</em> Cooking</h2>
+        <div class="divider-line divider-left"></div>
+
+        <p>Ember &amp; Oak was born from a simple conviction: that the best food is honest food. Founded in 2014 by Chef Miriam Sorel, our kitchen draws on wood-fire techniques passed down through generations, married with the finest seasonal produce from local farms within a 50-mile radius.</p>
+
+        <p>Every dish on our menu tells a story — of soil and season, of tradition and curiosity. We believe dining should be an unhurried ritual, not a transaction.</p>
+
+        <!-- Stat cards -->
+        <div class="row mt-4 g-3">
+          <div class="col-4">
+            <div class="stat-card">
+              <div class="stat-icon-ring sir-cal">
+                <i class="bi bi-calendar3-event-fill"></i>
+              </div>
+              <strong>10+</strong>
+              <span>Years Open</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="stat-card">
+              <div class="stat-icon-ring sir-tphy">
+                <i class="bi bi-trophy-fill"></i>
+              </div>
+              <strong>3</strong>
+              <span>Awards Won</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="stat-card">
+              <div class="stat-icon-ring sir-leaf">
+                <i class="bi bi-tree-fill"></i>
+              </div>
+              <strong>100%</strong>
+              <span>Local Sourced</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-ember mt-4">
+          <i class="bi bi-calendar2-heart-fill"></i>Book a Table
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     CONTACT SECTION
+============================================= -->
+<section id="contact">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <span class="section-eyebrow">Reservations</span>
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="row g-5 justify-content-center">
+
+      <!-- Contact info -->
+      <div class="col-md-4 col-lg-3 d-flex flex-column justify-content-center gap-2">
+
+        <div class="contact-info-item">
+          <div class="c-icon-ring cir-pin">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <div>
+            <span class="ci-label">Address</span>
+            <span class="ci-value">24 Fireside Lane, Nairobi</span>
+          </div>
+        </div>
+
+        <!-- Updated phone number -->
+        <div class="contact-info-item">
+          <div class="c-icon-ring cir-phone">
+            <i class="bi bi-telephone-fill"></i>
+          </div>
+          <div>
+            <span class="ci-label">Phone</span>
+            <a class="ci-value ci-link" href="tel:+254718616917">+254 718 616 917</a>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="c-icon-ring cir-mail">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+          <div>
+            <span class="ci-label">Email</span>
+            <span class="ci-value">hello@emberandoak.co.ke</span>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="c-icon-ring cir-clock">
+            <i class="bi bi-clock-fill"></i>
+          </div>
+          <div>
+            <span class="ci-label">Hours</span>
+            <span class="ci-value">Daily 12pm – 10pm</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <a href="https://wa.me/254718616917" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">
+          <i class="bi bi-whatsapp"></i>Chat on WhatsApp
+        </a>
+
+      </div>
+
+      <!-- Reservation form -->
+      <div class="col-md-8 col-lg-7">
+        <div class="contact-form-wrap">
+          <form>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <label class="form-label">
+                  <i class="bi bi-person-fill"></i>Your Name
+                </label>
+                <input type="text" class="form-control" placeholder="Jane Smith"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">
+                  <i class="bi bi-envelope-fill"></i>Email Address
+                </label>
+                <input type="email" class="form-control" placeholder="jane@email.com"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">
+                  <i class="bi bi-calendar2-date-fill"></i>Date of Visit
+                </label>
+                <input type="date" class="form-control"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">
+                  <i class="bi bi-people-fill"></i>Party Size
+                </label>
+                <select class="form-select">
+                  <option>1–2 guests</option>
+                  <option>3–4 guests</option>
+                  <option>5–6 guests</option>
+                  <option>Private event</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">
+                  <i class="bi bi-chat-quote-fill"></i>Message
+                </label>
+                <textarea class="form-control" rows="4" placeholder="Dietary requirements, special occasions…"></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button type="submit" class="btn btn-ember px-5">
+                  <i class="bi bi-send-fill"></i>Send Reservation Request
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center g-4">
+
+      <!-- Brand + contact -->
+      <div class="col-md-4">
+        <div class="footer-brand">
+          <span class="fb-icon" aria-hidden="true">
+            <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+              <circle cx="14" cy="14" r="14" fill="url(#footerGrad)"/>
+              <path d="M14 5s-5.5 4.5-5.5 9a5.5 5.5 0 0011 0C19.5 9.5 14 5 14 5zm0 4.5s-2.5 2 -2.5 4a2.5 2.5 0 005 0c0-2-2.5-4-2.5-4z" fill="rgba(255,255,255,0.9)"/>
+              <defs>
+                <linearGradient id="footerGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#c8813a"/>
+                  <stop offset="100%" stop-color="#d4a853"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          Ember <span>&amp; Oak</span>
+        </div>
+        <p class="footer-meta mt-2">
+          <i class="bi bi-geo-alt-fill"></i>24 Fireside Lane, Nairobi
+        </p>
+        <p class="footer-meta">
+          <i class="bi bi-telephone-fill"></i>
+          <a href="tel:+254718616917" class="footer-tel">+254 718 616 917</a>
+        </p>
+      </div>
+
+      <!-- Footer nav -->
+      <div class="col-md-4 text-md-center">
+        <a href="#home"    class="fnav-link"><i class="bi bi-house-heart-fill"></i>Home</a>
+        <a href="#menu"    class="fnav-link"><i class="bi bi-journal-richtext"></i>Menu</a>
+        <a href="#about"   class="fnav-link"><i class="bi bi-flower3"></i>About</a>
+        <a href="#contact" class="fnav-link"><i class="bi bi-send-fill"></i>Contact</a>
+      </div>
+
+      <!-- Social icons -->
+      <div class="col-md-4 text-md-end">
+        <a href="#" class="social-link sl-ig" title="Instagram" aria-label="Instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a href="#" class="social-link sl-fb" title="Facebook" aria-label="Facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://wa.me/254718616917" class="social-link sl-wa" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="#" class="social-link sl-tt" title="TikTok" aria-label="TikTok">
+          <i class="bi bi-tiktok"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <hr class="footer-divider"/>
+
+    <p class="text-center footer-copy">
+      <i class="bi bi-c-circle me-1"></i>2025 Ember &amp; Oak Restaurant · All rights reserved.
+    </p>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Navbar scroll effect -->
+<script>
+  (function () {
+    var nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  })();
+</script>
+
+</body>
+</html>
